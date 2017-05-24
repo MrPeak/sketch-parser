@@ -1,0 +1,34 @@
+{
+  "name": "sketch-parser",
+  "version": "0.1.0",
+  "description": "sketchapp document parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha -- --delay"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrPeak/sketch-parser.git"
+  },
+  "keywords": [
+    "sketch",
+    "sketchapp",
+    "parser"
+  ],
+  "author": "mrpeak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrPeak/sketch-parser/issues"
+  },
+  "homepage": "https://github.com/MrPeak/sketch-parser#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.1",
+    "mochawesome": "^2.2.0",
+    "power-assert": "^1.4.2"
+  },
+  "dependencies": {
+    "mz": "^2.6.0"
+  }
+}
