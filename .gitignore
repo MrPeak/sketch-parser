@@ -60,4 +60,6 @@ typings/
 # Mac osx
 .DS_Store
 
-
+# For testing
+tmp
+page*.json

@@ -4,7 +4,9 @@
   "description": "sketchapp document parser",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover _mocha -- --delay"
+    "ci": "istanbul cover _mocha -- --delay",
+    "test": "mocha",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -22,14 +24,18 @@
   },
   "homepage": "https://github.com/MrPeak/sketch-parser#readme",
   "devDependencies": {
+    "co-mocha": "^1.2.0",
     "eslint": "^3.19.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.1"
   },
   "dependencies": {
+    "bplist": "^0.0.4",
     "decompress": "^4.2.0",
+    "es6-promisify": "^5.0.0",
     "fs-extra": "^3.0.1",
-    "mz": "^2.6.0",
-    "power-assert": "^1.4.2"
+    "lodash": "^4.17.4",
+    "power-assert": "^1.4.2",
+    "traverse": "^0.6.6"
   }
 }
