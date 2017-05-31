@@ -2,4 +2,5 @@ node_modules
 coverage
 .vscode
 .settings
-tmp
+.fileCache
+page*.json

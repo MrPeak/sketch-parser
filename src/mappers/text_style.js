@@ -1,7 +1,7 @@
 // textStyle
 
 'use strict';
-const bplist2JSON = require('./decode_bqlist_base64');
+const bplist2JSON = require('../decode_bqlist');
 
 function lowerFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1);

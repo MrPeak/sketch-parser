@@ -2,8 +2,8 @@
 
 require('co-mocha');
 const assert = require('assert');
-const bplist2JSON = require('../src/decode_bqlist_base64');
-const formatAttribute = require('../src/format_attribute');
+const bplist2JSON = require('../src/decode_bqlist');
+const formatAttribute = require('../src/mappers/text_style');
 
 describe('Decode data', () => {
   it('Should return correct JSON object format.', function*() {

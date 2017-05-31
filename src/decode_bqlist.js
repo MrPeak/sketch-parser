@@ -1,7 +1,5 @@
 'use strict';
 
-// Decode sketch base64 bpslit
-
 const bplist = require('bplist');
 const promisify = require('es6-promisify');
 

@@ -61,5 +61,5 @@ typings/
 .DS_Store
 
 # For testing
-tmp
+.fileCache
 page*.json
