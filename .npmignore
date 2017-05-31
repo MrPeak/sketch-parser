@@ -1,6 +1,7 @@
 node_modules
 coverage
+samples
+test
 .vscode
 .settings
 .fileCache
-page*.json
