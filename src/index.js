@@ -33,7 +33,7 @@ class Parser {
    * Creates an instance of Parser.
    *
    * @param {string} sketchFile - SketchApp's absolute file path
-   * @param {boolean} isOSX - whether the platform is MacOSX or not.
+   * @param {boolean} needSketchTool - whether the platform is MacOSX or not.
    *
    * @memberof Parser
    */
@@ -136,7 +136,7 @@ class Parser {
     // text style transform
     traverse(pageData).map(function(x) {
       // textStyle
-      if (x.encodedAttributes && x._class.toLowerCase() === 'textstyle') {
+      if (x.encodedAttributes && x._class && x._class.toLowerCase() === 'textstyle') {
         tmpMap.set(this.path, x);
         return false;
       }
@@ -147,7 +147,7 @@ class Parser {
       }
 
       // zip color
-      if (this.notLeaf) {
+      if (x._class && x._class.toLowerCase() === 'color') {
         tmpMap.set(this.path, zipColor(x));
       }
     });
