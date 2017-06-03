@@ -48,6 +48,7 @@ module.exports = {
     fill: 'MSStyleFill',
     gradient: 'MSGradient',
     gradientStop: 'MSGradientStop',
+    shapeGroup: 'MSShapeGroup',
     MSAttributedString: 'NSConcreteAttributedString',
   },
 };

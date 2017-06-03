@@ -10,9 +10,9 @@ const path = require('path');
 const assert = require('assert');
 const exec = require('child_process').exec;
 
-
 // Third-party
-const uid2 = require("uid2")
+const uid2 = require('uid2');
+const flattenTree = require('tree-flatter');
 const fs = require('fs-extra');
 const decompress = require('decompress');
 const traverse = require('traverse');
@@ -136,7 +136,11 @@ class Parser {
     // text style transform
     traverse(pageData).map(function(x) {
       // textStyle
-      if (x.encodedAttributes && x._class && x._class.toLowerCase() === 'textstyle') {
+      if (
+        x.encodedAttributes &&
+        x._class &&
+        x._class.toLowerCase() === 'textstyle'
+      ) {
         tmpMap.set(this.path, x);
         return false;
       }
@@ -283,6 +287,28 @@ class Parser {
     documentData = this._mapDictionary(documentData);
     this.documentData = documentData;
     return documentData;
+  }
+
+  *getFlatLayerList() {
+    if (this.layerList) return this.layerList;
+
+    const pageList = yield this.getPageDataList(false);
+    let layerList = [];
+
+    // Loops pages
+    pageList.forEach(page => {
+      // Collects all flatten layers
+      const _layers = flattenTree(page, {
+        idKey: 'objectID',
+        itemsKey: 'layers',
+      });
+
+      layerList = layerList.concat(_layers);
+    });
+
+    this.layerList = layerList;
+
+    return layerList;
   }
 }
 

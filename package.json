@@ -1,6 +1,6 @@
 {
   "name": "sketch-parser",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "sketchapp document parser",
   "main": "./src/index.js",
   "scripts": {
@@ -37,6 +37,7 @@
     "lodash": "^4.17.4",
     "power-assert": "^1.4.2",
     "traverse": "^0.6.6",
+    "tree-flatter": "^1.0.1",
     "uid2": "^0.0.3"
   }
 }
