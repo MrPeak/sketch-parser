@@ -22,11 +22,11 @@ describe('Decode data', () => {
 
   it('Should return page list data.', function*() {
     const data1 = yield parser.getPageDataList();
-    // yield fs.writeJson('./page.json', data1);
+    yield fs.writeJson('./samples/sketchtoolPageDataList.json', data1);
     parser.needSketchTool = false;
     parser.pageDataList = null;
     const data2 = yield parser.getPageDataList();
-    // yield fs.writeJson('./page1.json', data2);
+    yield fs.writeJson('./samples/unzippedPageDataList.json', data2);
 
     assert(typeof data2 === 'object');
   });
@@ -36,11 +36,11 @@ describe('Decode data', () => {
 
     const data = yield parser.getMeta();
     // console.log(JSON.stringify(res));
-    console.log(data);
+    // console.log(data);
     assert(typeof data === 'object');
   });
 
-  it.only('Should return flatten layer list.', function*() {
+  it('Should return flatten layer list.', function*() {
     const layerList = yield parser.getFlatLayerList();
     // yield fs.writeJson('./page.json', layerList);
 

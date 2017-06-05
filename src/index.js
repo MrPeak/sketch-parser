@@ -22,6 +22,7 @@ const textStyle = require('./mappers/text_style');
 const dictionary = require('./mappers/dictionary');
 const zipColor = require('./mappers/color');
 const unzip = require('./mappers/unzip');
+const attributedString = require('./mappers/attributed_string');
 
 /**
  * Parser class
@@ -148,17 +149,25 @@ class Parser {
       // unzip
       if (this.isLeaf) {
         tmpMap.set(this.path, unzip(x));
+        return false;
       }
 
       // zip color
       if (x._class && x._class.toLowerCase() === 'color') {
         tmpMap.set(this.path, zipColor(x));
       }
+
+      // decode MSAttributedString
+      if (x._class && x._class.toLowerCase() === 'msattributedstring') {
+        tmpMap.set(this.path, x);
+        return false;
+      }
     });
 
     for (let [key, value] of tmpMap) {
       // tranform data
       value = yield textStyle(value);
+      value = yield attributedString(value);
       traverse(pageData).set(key, value);
       // debugger;
     }

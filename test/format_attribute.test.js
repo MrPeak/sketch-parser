@@ -35,7 +35,7 @@ describe('Formate attribute', () => {
 
     const res = yield* formatAttribute(obj);
 
-    console.log(res);
+    // console.log(res);
     assert(typeof res === 'object');
   });
 });
