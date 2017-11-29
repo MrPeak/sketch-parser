@@ -24,6 +24,8 @@ const zipColor = require('./mappers/color');
 const unzip = require('./mappers/unzip');
 const attributedString = require('./mappers/attributed_string');
 
+const MAX_BUFFER_SIZE = 1024 * 8000; // Buffer size limit: 1kb * 8000 = 8000kb
+
 /**
  * Parser class
  *
@@ -35,16 +37,18 @@ class Parser {
    *
    * @param {string} sketchFile - SketchApp's absolute file path
    * @param {boolean} needSketchTool - whether the platform is MacOSX or not.
+   * @param {number} maxBuffer - override spawned process stdout buffer size (needed for big sketch files).
    *
    * @memberof Parser
    */
-  constructor(sketchFile, needSketchTool) {
+  constructor(sketchFile, needSketchTool, maxBuffer = MAX_BUFFER_SIZE) {
     assert(
       path.isAbsolute(sketchFile),
       'SketchApp file\'s path must be absolute, plz check.'
     );
 
     this.needSketchTool = needSketchTool === false ? false : true;
+    this.maxBuffer = maxBuffer;
     this.filePath = sketchFile;
     this.folderPath = null;
     // Parsing JSOn files in the zip bundle is recommended.
@@ -74,7 +78,7 @@ class Parser {
       exec(
         cmd,
         {
-          maxBuffer: 1024 * 8000, // Buffer size limit: 1kb * 8000 = 8000kb
+          maxBuffer: this.maxBuffer,
         },
         (err, stdout, stderr) => {
           if (err) return reject(err);
