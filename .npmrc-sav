@@ -1,5 +1,0 @@
-#_auth="YXdtZGV2OkFQQlM3Rm1YWk12TFAxZDNGVnZkYXFXSko2Tg=="
-#always-auth=true
-#email=awmdev@db.com
-#registry=http://artifactory.awmd.intranet.db.com:8081/artifactory/api/npm/npm-main
-#@jfrog:registry=http://artifactory.awmd.intranet.db.com:8081/artifactory/api/npm/npm-main-publish
