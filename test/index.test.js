@@ -46,4 +46,14 @@ describe('Decode data', () => {
 
     assert(typeof layerList === 'object');
   });
+
+  it('Should set a default maxBuffer size', function*(){
+    assert(parser.maxBuffer === 1024 * 8000);
+  })
+
+  it('Should take in account a passed maxBuffer size', function*(){
+    const MAX_BUFFER_SIZE = 1024 * 10000;
+    const parserWithBufferSize = new Parser(path.join(__dirname, '.', 'assets/FitnessApp.sketch'), false, MAX_BUFFER_SIZE);
+    assert(parserWithBufferSize.maxBuffer === MAX_BUFFER_SIZE);
+  })
 });
